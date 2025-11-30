@@ -1,6 +1,8 @@
-package com.opticpro.opticpro.entity;
+package com.opticpro.opticpro.entity.eye;
 
 
+import com.opticpro.opticpro.entity.vision.Vision;
+import com.opticpro.opticpro.entity.visit.VisitType;
 import jakarta.persistence.*;
 import lombok.Data;
 

@@ -1,4 +1,4 @@
-package com.opticpro.opticpro.entity;
+package com.opticpro.opticpro.entity.vision;
 
 import jakarta.persistence.Entity;
 

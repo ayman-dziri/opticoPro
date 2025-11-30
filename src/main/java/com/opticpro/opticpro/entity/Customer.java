@@ -1,6 +1,7 @@
 package com.opticpro.opticpro.entity;
 
 
+import com.opticpro.opticpro.entity.visit.Visit;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
