@@ -1,6 +1,7 @@
 package com.opticpro.opticpro.entity;
 
 
+import com.opticpro.opticpro.entity.visit.Visit;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,7 +39,7 @@ public class Customer {
     @Column(nullable = true)
     private String notes;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "customer")

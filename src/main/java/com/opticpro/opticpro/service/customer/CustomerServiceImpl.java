@@ -17,10 +17,9 @@ public class CustomerServiceImpl implements CustomerService {
         this.customerRepository = customerRepository;
     }
 
-    public CustomerDto createCustomer(CustomerDto customerRequest) {
+    public Customer createCustomer(CustomerDto customerRequest) {
         Customer customer = CustomerMapper.mapToCustomer(customerRequest);
-        Customer savedCustomer = this.customerRepository.save(customer);
-        return CustomerMapper.mapToCustomerDto(savedCustomer);
+        return this.customerRepository.save(customer);
     }
 
     public List<Customer> getAllCustomers(){
@@ -36,8 +35,7 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer updateCustomer(int id, CustomerDto customerDto) {
         Customer customer = getCustomerById(id);
         customer = CustomerMapper.mapToCustomer(customerDto);
-        this.customerRepository.save(customer);
-        return customer;
+        return this.customerRepository.save(customer);
     }
 
     public void deleteCustomer(int id) {

@@ -1,5 +1,120 @@
-{
-  "firstName": "ayman",
-  "lastName": "dziri",
-  "telephone": "06dsfsdf"
-}
+[
+  {
+    "firstName": "ayman",
+    "lastName": "dziri",
+    "telephone": "06dsfsdf"
+  },
+  {
+    "visitId": 1,
+    "dateVisit": "01-12-2025",
+    "docteur": "dziri",
+    "observation": "mred",
+    "visitTypes":
+    [
+      {
+        "visitTypeId": 34,
+        "eyes":
+        [
+          {
+            "eyeId": 23,
+            "distance": 2,
+            "hauteur": 5,
+            "lentille": 0,
+            "visions":
+            [
+              {
+                "visionId": 7,
+                "sphere": -4.75,
+                "cylinder": -3.5,
+                "axe": 11,
+                "addition": 4
+              },
+              {
+                "visionId": 8,
+                "sphere": -2.5,
+                "cylinder": -1.5,
+                "axe": 15,
+                "addition": 0
+              }
+            ]
+          },
+          {
+            "eyeId": 24,
+            "distance": 3,
+            "hauteur": 7,
+            "lentille": 0,
+            "visions":
+            [
+              {
+                "visionId": 9,
+                "sphere": -1.75,
+                "cylinder": -3.5,
+                "axe": 15,
+                "addition": 4
+              },
+              {
+                "visionId": 10,
+                "sphere": -3.5,
+                "cylinder": -0.5,
+                "axe": 13,
+                "addition": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "visitTypeId": 3,
+        "eyes":
+        [
+          {
+            "eyeId": 23,
+            "distance": 2,
+            "hauteur": 5,
+            "lentille": 0,
+            "visions":
+            [
+              {
+                "visionId": 7,
+                "sphere": -4.75,
+                "cylinder": -3.5,
+                "axe": 11,
+                "addition": 4
+              },
+              {
+                "visionId": 8,
+                "sphere": -2.5,
+                "cylinder": -1.5,
+                "axe": 15,
+                "addition": 0
+              }
+            ]
+          },
+          {
+            "eyeId": 24,
+            "distance": 3,
+            "hauteur": 7,
+            "lentille": 0,
+            "visions":
+            [
+              {
+                "visionId": 9,
+                "sphere": -1.75,
+                "cylinder": -3.5,
+                "axe": 15,
+                "addition": 4
+              },
+              {
+                "visionId": 10,
+                "sphere": -3.5,
+                "cylinder": -0.5,
+                "axe": 13,
+                "addition": 0
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
