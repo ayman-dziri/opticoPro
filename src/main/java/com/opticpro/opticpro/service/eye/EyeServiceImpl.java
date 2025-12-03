@@ -3,6 +3,7 @@ package com.opticpro.opticpro.service.eye;
 
 import com.opticpro.opticpro.dto.eye.EyeDto;
 import com.opticpro.opticpro.entity.eye.Eye;
+import com.opticpro.opticpro.entity.visit.VisitType;
 import com.opticpro.opticpro.mapper.EyeMapper;
 import com.opticpro.opticpro.repository.EyeRepository;
 import org.springframework.stereotype.Service;
@@ -30,5 +31,6 @@ public class EyeServiceImpl implements EyeService {
         eyes.add(eyeR);
         return eyes;
     }
+    // 12pts mongoDB (50% find et 50% agregate) + QCM + casandra
 
 }
