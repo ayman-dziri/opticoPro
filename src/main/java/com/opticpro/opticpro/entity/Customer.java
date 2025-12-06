@@ -39,7 +39,7 @@ public class Customer {
     @Column(nullable = true)
     private String notes;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "customer")
