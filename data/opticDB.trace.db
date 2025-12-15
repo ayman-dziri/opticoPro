@@ -46,3 +46,7 @@ The connection was not closed by the application and is garbage collected [90018
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
 	... 16 more
+2025-12-09 03:24:01.786234Z jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "CUSTOMERS" non trouvée
+Table "CUSTOMERS" not found; SQL statement:
+select * from customers [42102-232]
