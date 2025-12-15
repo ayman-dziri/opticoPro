@@ -10,6 +10,8 @@ public class CustomerMapper {
         customer.setFirstName(customerRequest.getFirstName());
         customer.setLastName(customerRequest.getLastName());
         customer.setTelephone(customerRequest.getTelephone());
+        customer.setVille(customerRequest.getVille());
+        customer.setNotes(customerRequest.getNotes());
         return customer;
     }
 
@@ -18,6 +20,8 @@ public class CustomerMapper {
         customerRequest.setFirstName(customer.getFirstName());
         customerRequest.setLastName(customer.getLastName());
         customerRequest.setTelephone(customer.getTelephone());
+        customerRequest.setVille(customer.getVille());
+        customerRequest.setNotes(customer.getNotes());
         return customerRequest;
     }
 
