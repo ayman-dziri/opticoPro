@@ -10,5 +10,6 @@ public interface VisionService {
     List<Vision> findAll();
     Vision getVisionById(int id);
     Vision createVision(VisionDto visionDto, String type);
+    List<Vision> createVisions(List<VisionDto> visionsDto);
     Vision updateVision(int id, VisionDto visionDto, String type);
 }

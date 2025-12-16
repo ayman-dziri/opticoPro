@@ -7,6 +7,7 @@ import com.opticpro.opticpro.mapper.VisionMapper;
 import com.opticpro.opticpro.repository.VisionRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -29,6 +30,13 @@ public class VisionServiceImpl implements VisionService{
     public Vision createVision(VisionDto visionDto, String type){
         Vision vision = VisionMapper.mapToVision(visionDto, type);
         return visionRepository.save(vision);
+    }
+
+    public List<Vision> createVisions(List<VisionDto> visionsDto){
+        List<Vision> visions = new ArrayList<>();
+        visions.add(this.createVision(visionsDto.getFirst(), "F"));
+        visions.add(this.createVision(visionsDto.getLast(), "N"));
+        return visions;
     }
 
     public Vision updateVision(int id, VisionDto visionDto, String type){
