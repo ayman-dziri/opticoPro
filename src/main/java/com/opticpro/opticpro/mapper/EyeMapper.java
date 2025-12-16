@@ -1,9 +1,14 @@
 package com.opticpro.opticpro.mapper;
 
 import com.opticpro.opticpro.dto.eye.EyeDto;
+import com.opticpro.opticpro.dto.vision.VisionDto;
 import com.opticpro.opticpro.entity.eye.Eye;
 import com.opticpro.opticpro.entity.eye.EyeL;
 import com.opticpro.opticpro.entity.eye.EyeR;
+import com.opticpro.opticpro.entity.vision.Vision;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EyeMapper {
 
@@ -17,7 +22,6 @@ public class EyeMapper {
         eye.setDistance(eyeDto.getDistance());
         eye.setHeight(eyeDto.getHeight());
         eye.setLentille(eyeDto.getLentille());
-        eye.setVisions(eyeDto.getVisions());
 
         return eye;
     }
@@ -28,7 +32,6 @@ public class EyeMapper {
         eyeDto.setDistance(eye.getDistance());
         eyeDto.setHeight(eye.getHeight());
         eyeDto.setLentille(eye.getLentille());
-        eyeDto.setVisions(eye.getVisions());
         return eyeDto;
     }
 }
