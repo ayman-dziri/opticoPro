@@ -4,6 +4,7 @@ import com.opticpro.opticpro.entity.eye.Eye;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -16,5 +17,5 @@ public abstract class VisitType {
     private int id;
 
     @OneToMany(mappedBy = "visitType")
-    private List<Eye> eyes;
+    private List<Eye> eyes = new ArrayList<>();
 }
