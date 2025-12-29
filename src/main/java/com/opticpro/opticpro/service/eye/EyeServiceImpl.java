@@ -23,17 +23,24 @@ public class EyeServiceImpl implements EyeService {
         this.visionService = visionService;
     }
 
-    public Eye createEye(EyeDto eyeDto, String type) {
-        List<Vision> visions = this.visionService.createVisions(eyeDto.getVisions());
+    public Eye createEye(EyeDto eyeDto, String type) { //create one eye with these visions
+        List<Vision> visions = this.visionService.createVisions(eyeDto.getVisions()); // these visions
         Eye eye = EyeMapper.MapToEntity(eyeDto, type);
-        eye.setVisions(visions);
+        eye.setVisions(visions); // add these visions
         return this.eyeRepository.save(eye);
     }
 
-    public List<Eye> createEyes(List<EyeDto> eyeDto) {
+    public List<Eye> createEyes(List<EyeDto> eyeDto) { // create the two eyes
+        if(eyeDto == null || eyeDto.isEmpty()){ // verify if the eyes are null
+            throw new IllegalArgumentException("eyeDto cannot be null or empty");
+        }
+
         List<Eye> eyes = new ArrayList<>();
-        eyes.add(this.createEye(eyeDto.getFirst(), "R"));
-        eyes.add(this.createEye(eyeDto.getFirst(), "L"));
+        EyeDto firstEye = eyeDto.get(0);
+        EyeDto secondEye = eyeDto.get(1);
+        eyes.add(this.createEye(firstEye, "R")); // adding the right eye
+        eyes.add(this.createEye(secondEye, "L")); // adding the left eye
+
         return eyes;
     }
 
