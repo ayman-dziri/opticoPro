@@ -32,10 +32,16 @@ public class VisionServiceImpl implements VisionService{
         return visionRepository.save(vision);
     }
 
-    public List<Vision> createVisions(List<VisionDto> visionsDto){
+    public List<Vision> createVisions(List<VisionDto> visionsDto){ // create the two visions
+        if(visionsDto == null || visionsDto.isEmpty()){
+            throw new IllegalArgumentException("vision can not be null or empty");
+        }
+
         List<Vision> visions = new ArrayList<>();
-        visions.add(this.createVision(visionsDto.getFirst(), "F"));
-        visions.add(this.createVision(visionsDto.getLast(), "N"));
+        VisionDto firstVision = visionsDto.get(0);
+        VisionDto secondVision = visionsDto.get(1);
+        visions.add(this.createVision(firstVision, "F")); // far vision
+        visions.add(this.createVision(secondVision, "N")); // near vision
         return visions;
     }
 
