@@ -16,15 +16,15 @@ import java.util.List;
 @Service
 public class VisitTypeServiceImpl implements VisitTypeService {
 
-    private VisitTypeRepository visitTypeRepository;
-    private EyeService eyeService;
+    private final VisitTypeRepository visitTypeRepository;
+    private final EyeService eyeService;
 
     public VisitTypeServiceImpl(VisitTypeRepository visitTypeRepository, EyeService eyeService) {
         this.visitTypeRepository = visitTypeRepository;
         this.eyeService = eyeService;
     }
 
-    public VisitType createVisitType(VisitTypeDto visitTypeDto, String type) {
+    public VisitType createVisitType(VisitTypeDto visitTypeDto, String type) { // creating one visitType with these eyes
         List<Eye> eyeVisits = this.eyeService.createEyes(visitTypeDto.getEyes());
         VisitType visitType;
         if(type.equalsIgnoreCase("M"))  visitType = new Monture();
@@ -34,10 +34,16 @@ public class VisitTypeServiceImpl implements VisitTypeService {
         return this.visitTypeRepository.save(visitType);
     }
 
-    public List<VisitType> createVisitsType(List<VisitTypeDto> visitTypesDto) {
+    public List<VisitType> createVisitsType(List<VisitTypeDto> visitTypesDto) { //creating the two visitTypes
+        if(visitTypesDto == null || visitTypesDto.isEmpty()) {
+            throw new IllegalArgumentException("visit types can not be null or empty");
+        }
+
         List<VisitType> visitTypes = new ArrayList<>();
-        VisitType monture = createVisitType(visitTypesDto.getFirst(), "M");
-        VisitType lentille = createVisitType(visitTypesDto.getLast(), "L");
+        VisitTypeDto firstVisitType = visitTypesDto.get(0);
+        VisitTypeDto secondVisitType = visitTypesDto.get(1);
+        VisitType monture = createVisitType(firstVisitType, "M");// adding monture for visitType
+        VisitType lentille = createVisitType(secondVisitType, "L");// adding lentille for visitType
         visitTypes.add(monture);
         visitTypes.add(lentille);
         return visitTypes;
