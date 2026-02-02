@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
@@ -28,9 +30,12 @@ public class Visit {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
+    @OneToMany(mappedBy = "visit")
+    private List<VisitType> visitTypes = new ArrayList<>();
+
 
     @PrePersist
-    private void updateVisitDate() {
+    private void createVisitDate() {
         this.visitDate = LocalDateTime.now();
     }
 }
