@@ -18,6 +18,17 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     public Customer createCustomer(CustomerDto customerRequest) {
+        String customerTel = customerRequest.getTelephone();
+        int sizeOfTel = customerTel.length();
+        if(customerTel.startsWith("0") && sizeOfTel != 10) {
+            throw new IllegalArgumentException("invalid telephone number (10 numbers)");
+        }
+        if(customerTel.startsWith("+") && sizeOfTel < 11) {
+            throw new IllegalArgumentException("invalid telephone number ( MIN : 11)");
+        }
+        if(customerTel.startsWith("+") && sizeOfTel > 14) {
+            throw new IllegalArgumentException("invalid telephone number ( MAX : 14)");
+        }
         Customer customer = CustomerMapper.mapToCustomer(customerRequest);
         return this.customerRepository.save(customer);
     }

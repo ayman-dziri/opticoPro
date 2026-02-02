@@ -16,6 +16,10 @@ public abstract class VisitType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @ManyToOne
+    @JoinColumn(name = "visit_id", nullable = false)
+    private Visit visit;
+
     @OneToMany(mappedBy = "visitType")
     private List<Eye> eyes = new ArrayList<>();
 }
