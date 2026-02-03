@@ -29,7 +29,7 @@ public class VisitServiceImpl implements VisitService {
         return visitRepository.save(visit);
     }
 
-    public VisitsDto listVisits(Customer customer) {
+    public VisitsDto listCustomerVisits(Customer customer) {
         List<Visit> customerVisits = customer.getVisits();
         List<CustomerVisitsDto> customerVisitsDto = new ArrayList<>();
         for(Visit visit : customerVisits) {
