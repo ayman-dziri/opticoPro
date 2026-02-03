@@ -8,6 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,10 @@ public class Customer {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(length = 10)
+    @Column(nullable = true)
+    private Integer yearOfBirth;
+
+    @Column(length = 14)
     private String telephone;
 
     @Column(length = 15)
@@ -49,4 +53,16 @@ public class Customer {
     private void onCreat(){
         this.createdAt = LocalDateTime.now();
     }
+
+    @Transient
+    public Integer getAge(){
+        if(this.yearOfBirth == null)    return null;
+
+        LocalDate currentYear = LocalDate.now();
+        if(this.yearOfBirth < currentYear.getYear()) {
+            return currentYear.getYear() - this.yearOfBirth;
+        }
+        else throw new IllegalArgumentException("the year of birth is not validated");
+    }
+
 }

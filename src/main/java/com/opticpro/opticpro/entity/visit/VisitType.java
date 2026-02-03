@@ -4,6 +4,7 @@ import com.opticpro.opticpro.entity.eye.Eye;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -15,6 +16,10 @@ public abstract class VisitType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @ManyToOne
+    @JoinColumn(name = "visit_id", nullable = false)
+    private Visit visit;
+
     @OneToMany(mappedBy = "visitType")
-    private List<Eye> eyes;
+    private List<Eye> eyes = new ArrayList<>();
 }

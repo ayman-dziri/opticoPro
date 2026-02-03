@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface EyeService {
 
-    List<Eye> createEye(EyeDto eyeDto);
+    Eye createEye(EyeDto eyeDto, String type);
+    List<Eye> createEyes(List<EyeDto> eyeDto);
 
 }
