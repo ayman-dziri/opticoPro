@@ -7,12 +7,13 @@ import com.opticpro.opticpro.entity.visit.VisitType;
 
 public class VisitTypeMapper {
 
-//    public static VisitType mapToVisitType(VisitTypeDto visitTypeDto, String type) {
-//        VisitType visitType = null;
-//        if(type.equalsIgnoreCase("M"))  visitType = new Monture();
-//        else if(type.equalsIgnoreCase("L")) visitType = new Lentille();
-//        else throw new IllegalArgumentException("type of visit not found");
-//
-//        visitType.setEyes(visitTypeDto.getEyes());
-//    }
+    public static VisitType mapToEntity(VisitTypeDto visitTypeDto, String type) {
+        VisitType visitType = null;
+        if(type.equalsIgnoreCase("M"))  visitType = new Monture();
+        else if(type.equalsIgnoreCase("L")) visitType = new Lentille();
+        else throw new IllegalArgumentException("type of visit not found");
+        return visitType;
+
+    }
+
 }

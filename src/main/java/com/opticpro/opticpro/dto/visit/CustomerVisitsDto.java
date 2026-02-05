@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 @Data
 public class CustomerVisitsDto {
 
+    private int id;
+
     private LocalDateTime visitDate;
 
     private String doctorName;

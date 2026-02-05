@@ -25,19 +25,19 @@ public class CustomerController {
         return ResponseEntity.status(HttpStatus.CREATED).body(createdCustomer);
     }
 
-    @GetMapping("customers")
+    @GetMapping("/customers")
     public ResponseEntity<List<Customer>> getAllCustomers() {
         List<Customer> customers = this.customerService.getAllCustomers();
         return ResponseEntity.ok(customers);
     }
 
-    @GetMapping("customer/{id}")
+    @GetMapping("/customer/{id}")
     public ResponseEntity<Customer> getCustomer(@PathVariable int id) {
         Customer customer = this.customerService.getCustomerById(id);
         return ResponseEntity.ok(customer);
     }
 
-    @PutMapping("customer/{id}")
+    @PutMapping("/customer/{id}")
     public ResponseEntity<Customer> updateCustomer(@PathVariable int id,
                                                       @RequestBody CustomerDto customerDto
     ){
@@ -45,7 +45,7 @@ public class CustomerController {
         return ResponseEntity.ok(customer);
     }
 
-    @DeleteMapping("customer/{id}")
+    @DeleteMapping("/customer/{id}")
     public void deleteCustomer(@PathVariable int id) {
         this.customerService.deleteCustomer(id);
     }
