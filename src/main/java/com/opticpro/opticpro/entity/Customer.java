@@ -46,7 +46,7 @@ public class Customer {
     @Column(nullable = true)
     private LocalDateTime createdAt;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Visit> visits = new ArrayList<>();
 
     @PrePersist

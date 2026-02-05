@@ -42,10 +42,12 @@ public class VisitTypeServiceImpl implements VisitTypeService {
         List<VisitType> visitTypes = new ArrayList<>();
         VisitTypeDto firstVisitType = visitTypesDto.get(0);
         VisitTypeDto secondVisitType = visitTypesDto.get(1);
-        VisitType monture = createVisitType(firstVisitType, "M");// adding monture for visitType
-        VisitType lentille = createVisitType(secondVisitType, "L");// adding lentille for visitType
+
+        VisitType monture = createVisitType(firstVisitType, "M");// adding monture to visitType
+        VisitType lentille = createVisitType(secondVisitType, "L");// adding lentille to visitType
         visitTypes.add(monture);
         visitTypes.add(lentille);
+
         return visitTypes;
     }
 }

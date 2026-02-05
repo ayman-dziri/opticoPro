@@ -6,9 +6,14 @@ import com.opticpro.opticpro.dto.visit.VisitsDto;
 import com.opticpro.opticpro.entity.Customer;
 import com.opticpro.opticpro.entity.visit.Visit;
 
+import java.util.List;
+
 public interface VisitService {
 
     Visit createVisit(Customer customer, VisitRequest visitDto);
+    Visit getVisitById(int id);
+    List<Visit> getLastVisits();
     VisitsDto listCustomerVisits(Customer customer);
-    VisitDetails showVisit(Visit visit);
+    VisitDetails showVisitByCustomer(Visit visit);
+    void deleteVisitById(int id);
 }
