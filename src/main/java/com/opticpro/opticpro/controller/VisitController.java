@@ -25,7 +25,7 @@ public class VisitController {
         this.customerService = customerService;
     }
 
-    @PostMapping("customers/{customerId}/visit")
+    @PostMapping("/customers/{customerId}/visit")
     public ResponseEntity<Visit> createVisit(@RequestBody VisitRequest visitRequest,
                                              @PathVariable int customerId) {
         Customer customer = this.customerService.getCustomerById(customerId);
@@ -33,7 +33,7 @@ public class VisitController {
         return ResponseEntity.status(HttpStatus.CREATED).body(visit);
     }
 
-    @GetMapping("customers/{customerId}/visits")
+    @GetMapping("/customers/{customerId}/visits")
     public ResponseEntity<VisitsDto> getCustomerVisits(@PathVariable int customerId) {
 
         Customer customer = this.customerService.getCustomerById(customerId);
@@ -41,7 +41,7 @@ public class VisitController {
         return ResponseEntity.ok(visitsDto);
     }
 
-    @GetMapping("/visit/{id}")
+    @GetMapping("/visits/{id}")
     public ResponseEntity<VisitDetails> showVisit(@PathVariable int id) {
         Visit visit = this.visitService.getVisitById(id);
         VisitDetails visitDetails = this.visitService.showVisitByCustomer(visit);
@@ -54,7 +54,7 @@ public class VisitController {
         return ResponseEntity.ok(visits);
     }
 
-    @DeleteMapping({"visit/{id}"})
+    @DeleteMapping({"/visits/{id}"})
     public void deleteVisit(@PathVariable int id) {
         this.visitService.deleteVisitById(id);
     }
