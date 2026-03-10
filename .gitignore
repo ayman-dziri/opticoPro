@@ -5,8 +5,7 @@ target/
 !**/src/test/**/target/
 
 ### DATABASE ###
-/data/
-*.db
+data/
 *.mv.db
 *.trace.db
 
