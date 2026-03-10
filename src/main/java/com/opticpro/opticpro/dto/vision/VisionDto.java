@@ -14,6 +14,4 @@ public class VisionDto {
     private byte axe;
 
     private byte addition;
-
-    private Eye eye;
 }
