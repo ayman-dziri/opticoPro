@@ -30,6 +30,10 @@ public class VisitTypeServiceImpl implements VisitTypeService {
         if(type.equalsIgnoreCase("M"))  visitType = new Monture();
         else if(type.equalsIgnoreCase("L"))  visitType = new Lentille();
         else throw new IllegalArgumentException("type of visit not found");
+        for(Eye eye : eyeVisits)
+        {
+            eye.setVisitType(visitType);
+        }
         visitType.setEyes(eyeVisits);
         return visitType;
     }
