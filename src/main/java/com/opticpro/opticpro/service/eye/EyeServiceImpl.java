@@ -27,7 +27,7 @@ public class EyeServiceImpl implements EyeService {
         List<Vision> visions = this.visionService.createVisions(eyeDto.getVisions()); // these visions
         Eye eye = EyeMapper.MapToEntity(eyeDto, type);
         eye.setVisions(visions); // add these visions
-        return this.eyeRepository.save(eye);
+        return eye;
     }
 
     public List<Eye> createEyes(List<EyeDto> eyeDto) { // create the two eyes
