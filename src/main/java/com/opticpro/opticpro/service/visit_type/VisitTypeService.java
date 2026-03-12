@@ -8,5 +8,5 @@ import java.util.List;
 public interface VisitTypeService {
 
     VisitType createVisitType(VisitTypeDto visitTypeDto, String type);
-    List<VisitType> createVisitsType(List<VisitTypeDto> visitTypesDto);
+    List<VisitType> createOneOrTwoVisitsType(List<VisitTypeDto> visitTypesDto);
 }

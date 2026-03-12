@@ -29,19 +29,46 @@ public class VisitServiceImpl implements VisitService {
     }
 
     public Visit createVisit(Customer customer, VisitRequest visitDto) {
-        Visit visit = VisitMapper.mapToEntity(visitDto); // mapping doctorName and observation to entity
-        visit.setCustomer(customer); // mapping the customer
+        Visit visit = VisitMapper.mapToEntity(visitDto); // map doctorName and observation to entity
+        visit.setCustomer(customer); // map the customer
 
-        VisitTypeDto monture = visitDto.getVisitTypes().get(0); // getting the first visitType from dto
-        VisitTypeDto lentille = visitDto.getVisitTypes().get(1); // getting the second visitType from dto
-        List<VisitTypeDto> visitTypesDto = new ArrayList<>();
-        visitTypesDto.add(lentille); // adding the dtos to a new list
-        visitTypesDto.add(monture);
-        List<VisitType> visitTypes = this.visitTypeService.createVisitsType(visitTypesDto); // using the visitType service to map the dto to entity
+        List<VisitTypeDto> visitTypesDto = visitDto.getVisitTypes();
+        List<VisitType> visitTypes = this.visitTypeService.createOneOrTwoVisitsType(visitTypesDto); // use the visitType service to map the dto to entity
+        for(VisitType visitType : visitTypes)
+        {
+            visitType.setVisit(visit);
+        }
         visit.setVisitTypes(visitTypes);
 
         return visitRepository.save(visit);
     }
+
+//    private static List<VisitTypeDto> getVisitTypeDtoList(VisitRequest visitDto) {
+//        List<VisitTypeDto> existingVisitTypesDto = visitDto.getVisitTypes(); // get the visit types that the customer has entered
+//        VisitTypeDto monture;
+//        VisitTypeDto lentille;
+//        System.out.println("la visite type est : ");
+//        if(existingVisitTypesDto.size() == 1) // si y a pas de lentille, juste monture on retourne ce dto saisie
+//        {
+//            System.out.println("1) " + existingVisitTypesDto);
+//            return existingVisitTypesDto;
+//        }
+//        else if(existingVisitTypesDto.isEmpty())
+//        {
+//            System.out.println("2) " + existingVisitTypesDto);
+//            return null;
+//        }
+//        else{
+//            monture = existingVisitTypesDto.get(0); // get the first visitType from dto
+//            lentille = existingVisitTypesDto.get(1); // get the second visitType from dto
+//        }
+//
+//        List<VisitTypeDto> visitTypesDto = new ArrayList<>();
+//        if(monture != null)    visitTypesDto.add(monture); // add the dtos to the new list
+//        if(lentille != null)    visitTypesDto.add(lentille);
+//        System.out.println("3) " + visitTypesDto);
+//        return visitTypesDto;
+//    }
 
     public Visit getVisitById(int id) {
         return visitRepository.findById(id).orElse(null);

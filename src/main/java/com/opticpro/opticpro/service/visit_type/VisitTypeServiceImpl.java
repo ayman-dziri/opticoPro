@@ -31,22 +31,25 @@ public class VisitTypeServiceImpl implements VisitTypeService {
         else if(type.equalsIgnoreCase("L"))  visitType = new Lentille();
         else throw new IllegalArgumentException("type of visit not found");
         visitType.setEyes(eyeVisits);
-        return this.visitTypeRepository.save(visitType);
+        return visitType;
     }
 
-    public List<VisitType> createVisitsType(List<VisitTypeDto> visitTypesDto) { //creating the two visitTypes
+    public List<VisitType> createOneOrTwoVisitsType(List<VisitTypeDto> visitTypesDto) { //create one or two of visitTypes
         if(visitTypesDto == null || visitTypesDto.isEmpty()) {
             throw new IllegalArgumentException("visit types can not be null or empty");
         }
 
+        VisitTypeDto firstVisitType = visitTypesDto.get(0); // get monture entered by user
+        VisitType monture = createVisitType(firstVisitType, "M"); // create monture to add it to the list
         List<VisitType> visitTypes = new ArrayList<>();
-        VisitTypeDto firstVisitType = visitTypesDto.get(0);
-        VisitTypeDto secondVisitType = visitTypesDto.get(1);
+        visitTypes.add(monture); // add monture to the list
 
-        VisitType monture = createVisitType(firstVisitType, "M");// adding monture to visitType
-        VisitType lentille = createVisitType(secondVisitType, "L");// adding lentille to visitType
-        visitTypes.add(monture);
-        visitTypes.add(lentille);
+        if(visitTypesDto.size() == 1) // if user entered just one visit type (monture OR lentille)
+            return visitTypes;
+
+        VisitTypeDto secondVisitType = visitTypesDto.get(1); // get lentille entered by user
+        VisitType lentille = createVisitType(secondVisitType, "L"); // create lentille to add it to the list
+        visitTypes.add(lentille); // add lentille to the list
 
         return visitTypes;
     }
