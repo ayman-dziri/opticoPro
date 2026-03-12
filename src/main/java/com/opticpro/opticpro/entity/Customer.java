@@ -1,12 +1,10 @@
 package com.opticpro.opticpro.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.opticpro.opticpro.entity.visit.Visit;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -16,7 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Data
+@Getter
+@Setter
 @Entity
 @Table
 public class Customer {
@@ -31,7 +30,6 @@ public class Customer {
     @Column(nullable = false)
     private String lastName;
 
-    @Column(nullable = true)
     private Integer yearOfBirth;
 
     @Column(length = 14)
@@ -40,10 +38,8 @@ public class Customer {
     @Column(length = 15)
     private String ville;
 
-    @Column(nullable = true)
     private String notes;
 
-    @Column(nullable = true)
     private LocalDateTime createdAt;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
@@ -59,7 +55,7 @@ public class Customer {
         if(this.yearOfBirth == null)    return null;
 
         LocalDate currentYear = LocalDate.now();
-        if(this.yearOfBirth < currentYear.getYear()) {
+        if(this.yearOfBirth <= currentYear.getYear()) {
             return currentYear.getYear() - this.yearOfBirth;
         }
         else throw new IllegalArgumentException("the year of birth is not validated");
