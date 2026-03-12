@@ -12,6 +12,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "VISION_KIND")
 @Table
 public abstract class Vision {
 
@@ -19,16 +20,12 @@ public abstract class Vision {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = true)
     private byte sphere;
 
-    @Column(nullable = true)
     private byte cylinder;
 
-    @Column(nullable = true)
     private byte axe;
 
-    @Column(nullable = true)
     private byte addition;
 
     @ManyToOne
