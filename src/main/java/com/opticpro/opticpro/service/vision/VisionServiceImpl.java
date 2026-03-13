@@ -28,8 +28,7 @@ public class VisionServiceImpl implements VisionService{
     }
 
     public Vision createVision(VisionDto visionDto, String type){
-        Vision vision = VisionMapper.mapToVision(visionDto, type);
-        return visionRepository.save(vision);
+        return VisionMapper.mapToVision(visionDto, type);
     }
 
     public List<Vision> createVisions(List<VisionDto> visionsDto){ // create the two visions

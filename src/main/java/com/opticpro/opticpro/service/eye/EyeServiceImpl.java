@@ -24,9 +24,18 @@ public class EyeServiceImpl implements EyeService {
     }
 
     public Eye createEye(EyeDto eyeDto, String type) { //create one eye with these visions
-        List<Vision> visions = this.visionService.createVisions(eyeDto.getVisions()); // these visions
+        List<Vision> visions = this.visionService.createVisions(eyeDto.getVisions());
         Eye eye = EyeMapper.MapToEntity(eyeDto, type);
+        for(Vision vision : visions)
+        {
+            vision.setEye(eye);
+            Eye eye1 = vision.getEye();
+            System.out.println("eye of vision DISTANCE : " + eye1.getDistance());
+        }
         eye.setVisions(visions); // add these visions
+        List<Vision> visions1 = eye.getVisions();
+        System.out.println("FAR vision ADD : " + visions1.get(0).getAddition());
+        System.out.println("NEAR vision ADD : " + visions1.get(1).getAddition());
         return eye;
     }
 
@@ -46,7 +55,5 @@ public class EyeServiceImpl implements EyeService {
 
 
 
-
-    // 12pts mongoDB (50% find et 50% agregate) + QCM + casandra
 
 }
