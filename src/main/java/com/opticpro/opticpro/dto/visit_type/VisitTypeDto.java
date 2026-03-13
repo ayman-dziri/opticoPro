@@ -10,6 +10,8 @@ import java.util.List;
 @Data
 public class VisitTypeDto {
 
+    private String type;
+
     private List<EyeDto> eyes = new ArrayList<>();
 
 }
