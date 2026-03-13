@@ -8,4 +8,9 @@ import jakarta.persistence.Entity;
 @DiscriminatorValue("M")
 public class Monture extends VisitType {
 
+    @Override
+    public String getType(){
+        return "M";
+    }
+
 }

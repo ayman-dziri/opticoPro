@@ -7,4 +7,9 @@ import jakarta.persistence.Entity;
 @Entity
 @DiscriminatorValue("L")
 public class Lentille extends VisitType {
+
+    @Override
+    public String getType() {
+        return "L";
+    }
 }

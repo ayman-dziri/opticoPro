@@ -1,6 +1,7 @@
 package com.opticpro.opticpro.entity.visit;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.opticpro.opticpro.entity.eye.Eye;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -15,16 +16,20 @@ import java.util.List;
 @Table
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "visit-kind")
+@JsonPropertyOrder({"id", "type", "eyes"})
 public abstract class VisitType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    public abstract String getType();
+
     @ManyToOne
     @JoinColumn(name = "visit_id", nullable = false)
     @JsonIgnore
     private Visit visit;
+
 
     @OneToMany(mappedBy = "visitType", cascade = CascadeType.ALL)
     private List<Eye> eyes = new ArrayList<>();
