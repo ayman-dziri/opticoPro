@@ -1,7 +1,8 @@
 package com.opticpro.opticpro.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.opticpro.opticpro.entity.visit.Visit;
 import jakarta.persistence.*;
 import lombok.*;
@@ -18,6 +19,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table
+@JsonPropertyOrder({"id", "firstName", "lastName", "yearOfBirth", "telephone", "ville", "notes", "createdAt", "age", "visits"})
 public class Customer {
 
     @Id
