@@ -36,6 +36,6 @@ public abstract class Eye {
     @JsonIgnore
     private VisitType visitType;
 
-    @OneToMany(mappedBy = "eye")
+    @OneToMany(mappedBy = "eye", cascade = CascadeType.ALL)
     private List<Vision> visions = new ArrayList<>();
 }
